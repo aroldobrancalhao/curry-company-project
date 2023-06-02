@@ -35,7 +35,7 @@ def orber_share_by_week( df1 ):
     df_aux = pd.merge( df_aux1, df_aux2, how='inner' )
     df_aux['order_by_delivery'] = df_aux['ID'] / df_aux['Delivery_person_ID']
     # gráfico
-    fig = px.line( df_aux, x='week_of_year', y='order_by_delivery' )
+    fig = px.line( df_aux, x='week_of_year', y='order_by_delivery', labels={'order_by_delivery': 'Quantidade por Entregador', 'week_of_year': 'Semanas do Ano'} )
     return fig
 
 def orber_by_week( df1 ):
@@ -44,7 +44,7 @@ def orber_by_week( df1 ):
     df_aux = df1.loc[:, ['ID', 'week_of_year']].groupby( 'week_of_year' ).count().reset_index()
     # gráfico
     px.bar( df_aux, x='week_of_year', y='ID' )
-    fig = px.line( df_aux, x='week_of_year', y='ID' )
+    fig = px.line( df_aux, x='week_of_year', y='ID', labels={'ID': 'Quantidade de Pedidos', 'week_of_year': 'Semanas do Ano'} )
     return fig
 
 def traffic_order_city( df1 ):
@@ -52,7 +52,7 @@ def traffic_order_city( df1 ):
     df_aux = df1.loc[:, cols].groupby( ['City', 'Road_traffic_density'] ).count().reset_index()
     df_aux['perc_ID'] = 100 * ( df_aux['ID'] / df_aux['ID'].sum() )
     # gráfico
-    fig = px.scatter( df_aux, x='City', y='Road_traffic_density', size='ID', color='City')
+    fig = px.scatter( df_aux, x='City', y='Road_traffic_density', size='ID', color='City', labels={'City': 'Cidades', 'Road_traffic_density': 'Condições de Trânsito'} )
     return fig
 
 def order_metric( df1 ):
@@ -60,7 +60,7 @@ def order_metric( df1 ):
     df_aux = df1.loc[:, ['ID', 'Order_Date']].groupby( 'Order_Date'    ).count().reset_index()
     df_aux.columns = ['order_date', 'qtde_entregas']       
     # gráfico
-    fig = px.bar( df_aux, x='order_date', y='qtde_entregas' )
+    fig = px.bar( df_aux, x='order_date', y='qtde_entregas', labels={'qtde_entregas': 'Entregas Diarias', 'order_date': 'Pedidos por Dia'} )
     
     return fig
 
@@ -206,7 +206,7 @@ tab1, tab2, tab3  =st.tabs(['Visão Gerencial', 'Visão Tática', 'Visão Geogr�
 with tab1: 
     with st.container():
         fig = order_metric( df1 )
-        st.markdown( '# Orders by Day' )
+        st.header( 'Pedidos por Dia' )
         st.plotly_chart( fig, use_container_width=True )
           
     with st.container(): 
@@ -214,22 +214,22 @@ with tab1:
         
         with col1:
             fig = traffic_order_share( df1 )
-            st.header( 'Traffic Order Share' )
+            st.header( 'Condições de Trânsito' )
             st.plotly_chart( fig, use_container_width=True )
         
         with col2:
             fig = traffic_order_city( df1 )
-            st.header( 'Traffic Order City' )
+            st.header( 'Condições de Trânsito por Cidade' )
             st.plotly_chart( fig, use_container_width=True )          
             
 with tab2:
     with st.container():
-        st.header('Order by Week')
+        st.header('Pedidos por Semana')
         fig = orber_by_week( df1 )
         st.plotly_chart( fig, use_container_width=True )
 
     with st.container():
-        st.header('Order Share by Week')
+        st.header('Pedidos pr Entregador')
         fig = orber_share_by_week( df1 )
         st.plotly_chart( fig, use_container_width=True )
 

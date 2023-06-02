@@ -18,7 +18,6 @@ st.set_page_config( page_title='Visão Restaurantes', page_icon='🍽️', layou
 # ==================================================== 
 
 def avg_std_time_on_traffic( df1 ):
-    st.markdown("""___""")
     df_aux = df1.loc[:, ['City', 'Time_taken(min)', 'Road_traffic_density']].groupby(['City', 'Road_traffic_density']).agg({'Time_taken(min)': ['mean', 'std']})
     df_aux.columns = ['avg_time', 'std_time']
     df_aux = df_aux.reset_index()
@@ -225,6 +224,7 @@ with tab1:
 
     with st.container():
         st.markdown("""___""")
+        st.title('Tempo médio de Entrega por Cidade e por Trânsito')
         fig = avg_std_time_on_traffic( df1 )
         st.plotly_chart(fig)
         
