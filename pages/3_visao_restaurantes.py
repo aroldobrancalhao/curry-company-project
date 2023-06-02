@@ -129,7 +129,7 @@ df1 = clean_code( df )
 st.header('Marketplace - Visão Restaurantes')
 
 #image_path = 'teste.jpg'
-image = Image.open( 'teste.jpg' )
+image = Image.open( 'logo.jpg' )
 st.sidebar.image( image, width=180)
 
 st.sidebar.markdown( '# Cury Company')

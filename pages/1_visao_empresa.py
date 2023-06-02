@@ -146,7 +146,7 @@ df1 = clean_code( df )
 st.header('Marketplace - Visão Restaurantes')
 
 #image_path = 'teste.jpg'
-image = Image.open( 'teste.jpg' )
+image = Image.open( 'logo.jpg' )
 st.sidebar.image( image, width=180)
 
 st.sidebar.markdown( '# Cury Company')
@@ -235,7 +235,7 @@ with tab2:
 
 
 with tab3:    
-    st.header( 'Country Maps' )
+    st.header( 'Mapa Pais' )
     map_ = country_map( df1 )
     
 

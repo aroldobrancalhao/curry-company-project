@@ -3,12 +3,13 @@ from PIL import Image
 
 st.set_page_config(
     page_title='Home',
-    page_icon='🥡'
+    page_icon='🥡',
+    layout='wide'
 )
 
 
 #image_path = '/comunidade_ds/repos/ftc/projeto/'
-image = Image.open( 'teste.jpg' )
+image = Image.open( 'logo.jpg' )
 st.sidebar.image(image, width=180)
 
 st.sidebar.markdown('# Cury Company')
