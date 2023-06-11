@@ -152,7 +152,7 @@ tab1, tab2, tab3  =st.tabs(['Visão Gerencial', '_', '_'])
 
 with tab1:
     with st.container():
-        st.header('Métricas Gerias')
+        st.header('Métricas Gerais')
 
         col1, col2, col3, col4 = st.columns(4, gap='large')
         with col1:
