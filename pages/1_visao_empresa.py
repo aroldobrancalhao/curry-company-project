@@ -229,13 +229,13 @@ with tab2:
         st.plotly_chart( fig, use_container_width=True )
 
     with st.container():
-        st.header('Pedidos pr Entregador')
+        st.header('Pedidos por Entregador')
         fig = orber_share_by_week( df1 )
         st.plotly_chart( fig, use_container_width=True )
 
 
 with tab3:    
-    st.header( 'Mapa Pais' )
+    st.header( 'Mapa do Pais' )
     map_ = country_map( df1 )
     
 
