@@ -239,6 +239,7 @@ with tab1:
 
     with st.container():
         st.markdown("""___""")
+        st.header('Desvio padrão de Entrega por Cidade')
         df_aux = df1.loc[:, ['City', 'Time_taken(min)']].groupby('City').agg({'Time_taken(min)': ['mean', 'std']})
         df_aux.columns = ['avg_time', 'std_time']
         df_aux = df_aux.reset_index()
