@@ -235,7 +235,7 @@ with tab2:
 
 
 with tab3:    
-    st.header( 'Mapa do Pais' )
+    st.header( 'Mapa do País' )
     map_ = country_map( df1 )
     
 
